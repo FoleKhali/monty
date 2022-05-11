@@ -2,9 +2,8 @@
 #include "lists.h"
 
 /**
- *
- *
- *
+ * monty - interpreter
+ * @args: args
  */
 
 void monty(args_t *args)
@@ -21,9 +20,10 @@ void monty(args_t *args)
 }
 
 /**
- *
- *
- *
+ * main - the main function
+ * @argc: argc
+ * @argv: argv
+ * Return: EXIT_SUCCESS
  */
 
 int main(int argc, char *argv[])
@@ -33,7 +33,6 @@ int main(int argc, char *argv[])
 	args.av = argv[1]
 	args.ac = argc;
 	args.lin_number = 0;
-	
 	monty(args);
 
 	return (EXIT_SUCCESS);
