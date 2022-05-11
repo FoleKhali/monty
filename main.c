@@ -13,7 +13,7 @@ void monty(args_t *args)
 
 	if (args->ac != 2)
 	{
-		dprintf("Error: Can't open file");
+		write(STDERR_FILENO, USAGE, 5)
 		exit(EXIT_FAILURE);
 	}
 
@@ -28,7 +28,7 @@ void monty(args_t *args)
 
 int main(int argc, char *argv[])
 {
-	args_T = args;
+	args_ti = args;
 
 	args.av = argv[1]
 	args.ac = argc;

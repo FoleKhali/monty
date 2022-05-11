@@ -61,14 +61,10 @@ void push_handler(stack_t **stack, unsigned int line_number)
  * @f: ...
  */
 
-void pall_handler(stack_t **stack, unsigned int n)
+void pall_handler(stack_t **stack, unsigned int line_number)
 {
-	stack_t *now = NULL;
-	(void)n;
-
-	while (now != NULL)
-	{
-		printf()
-		now = now->next;
-	}
+	(void)line_number;
+	if (*stack)
+		print_dlistint(*stack);
 }
+
