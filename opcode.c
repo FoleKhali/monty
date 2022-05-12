@@ -5,16 +5,25 @@
  * @f: ...
  */
 
-void (*f)(stack_t **stack, unsigned int line_number)
-{
-        instruction_T [] {
-                {"push", push_handler},
-                {"pall", pall_handler},
-                {"pint", pint_handler},
-                {"pop", pop_handler},
-                {"nop", nop_handler},
-                {"sub", sub_handler},
-        }
+void the_opcode(stack_t **stack, char *argu)
+{ 
+	instruction_t code[] {
+		{"push", push_handler},
+		{"pall", pall_handler},
+		{"pint", pint_handler},
+		{"pop", pop_handler},
+		{"nop", nop_handler},
+		{"sub", sub_handler},
+		{NULL, NULL}
+	};
+
+	int x = 0;
+
+	while (code[x].opcode)
+	{
+		if (strcmp())
+	}
+
 }
 
 /**
