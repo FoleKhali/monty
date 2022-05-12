@@ -1,5 +1,7 @@
 #include "lists.h"
 #include "monty.h"
+#include "monty.h"
+#include "lists.h"
 
 /**
  * get_func - selects the right function
@@ -8,8 +10,8 @@
  * Return: pointer to the selected function, or NULL on failure
  */
 void (*get_func(char **parsed))(stack_t **, unsigned int)
-{ 
-	instruction_t fun_arr[] = {
+{
+	instruction_t func_arr[] = {
 		{"push", push_handler},
 		{"pall", pall_handler},
 		{"pint", pint_handler},
@@ -40,27 +42,6 @@ void (*get_func(char **parsed))(stack_t **, unsigned int)
 		}
 	}
 	return (NULL);
-}
-
-/**
- * @f: ...
- */
-
-
-stack_t *n_node(int n)
-{
-	stack_t *new = NULL;
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
-	{
-		printf("Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	new->n = n;
-	new->next = NULL;
-	new->prev = NULL;
-
-	return (new);
 }
 
 /**
