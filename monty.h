@@ -55,6 +55,10 @@ typedef stack_t dlistint_t;
 size_t print_dlistint(const dlistint_t *h);
 void pall_handler(stack_t **stack, unsigned int line_number);
 void push_handler(stack_t **stack, unsigned int line_number);
+void nop_handler(stack_t **stack, unsigned int line_number);
+void pop_handler(stack_t **stack, unsigned int line_number);
+void sub_handler(stack_t **stack, unsigned int line_number);
+void pint_handler(stack_t **stack, unsigned int line_number);
 stack_t *n_node(int n);
 
 #define USAGE "USAGE: monty file\n" 
