@@ -34,8 +34,8 @@ void the_opcode(stack_t **stack, char *argu)
 stack_t *n_node(int n)
 {
 	stack_t *new = NULL;
-	*new = malloc(sizeof(stack_t));
-	if (new = NULL)
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
 	{
 		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
@@ -56,7 +56,7 @@ void push_handler(stack_t **stack, unsigned int line_number)
 	stack_t *new = NULL;
 	(void)line_number;
 
-	new = n_node;
+	new = n_node(result);
 
 	new->next = *stack;
 	if (*stack != NULL)
@@ -75,5 +75,11 @@ void pall_handler(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	if (*stack)
 		print_dlistint(*stack);
+}
+
+void nop_handler(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
 }
 
