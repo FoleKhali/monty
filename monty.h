@@ -47,10 +47,10 @@ typedef struct far_s
 {
 	FILE *fd;
 	char *line;
-} far_t
+} far_t;
 
 extern far_t far;
-
+void the_opcode(stack_t **stack, char *argu);
 typedef stack_t dlistint_t;
 size_t print_dlistint(const dlistint_t *h);
 void pall_handler(stack_t **stack, unsigned int line_number);
