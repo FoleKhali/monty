@@ -48,7 +48,7 @@ typedef struct far_s
 	FILE *fd;
 	char *line;
 } far_t;
-
+extern int result;
 extern far_t far;
 void the_opcode(stack_t **stack, char *argu);
 typedef stack_t dlistint_t;

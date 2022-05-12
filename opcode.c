@@ -7,7 +7,7 @@
 
 void the_opcode(stack_t **stack, char *argu)
 { 
-	instruction_t code[] {
+	instruction_t code[] = {
 		{"push", push_handler},
 		{"pall", pall_handler},
 		{"pint", pint_handler},
@@ -34,7 +34,7 @@ void the_opcode(stack_t **stack, char *argu)
 stack_t *n_node(int n)
 {
 	stack_t *new = NULL;
-	*new = malloc(size(stack_t));
+	*new = malloc(sizeof(stack_t));
 	if (new = NULL)
 	{
 		printf("Error: malloc failed\n");
