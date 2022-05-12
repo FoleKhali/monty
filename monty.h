@@ -36,6 +36,20 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+/**
+ * struct far_s - global variable
+ * @fd: File descriptor
+ * @line: for getline
+ *
+ * Description: to have getline
+ */
+typedef struct far_s
+{
+	FILE *fd;
+	char *line;
+} far_t
+
+extern far_t far;
 
 typedef stack_t dlistint_t;
 size_t print_dlistint(const dlistint_t *h);
