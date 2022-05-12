@@ -25,7 +25,7 @@ void monty(args_t *args)
  * @argv: argv
  * Return: EXIT_SUCCESS
  */
-
+/**
 int main(int argc, char *argv[])
 {
 	args_ti = args;
@@ -36,4 +36,49 @@ int main(int argc, char *argv[])
 	monty(args);
 
 	return (EXIT_SUCCESS);
+}
+*/
+/**
+ * main - the main function
+ * @argc: argc
+ * @argv: argv
+ * Return: EXIT_SUCCESS
+ */
+int main(int argc, char *argv[])
+{
+	size_t len = 0;
+	int get = 0;
+	int count = 0;
+	char *argu = NULL;
+	int final = 0;
+	stack_t *stack = NULL;
+	/**
+	 * esta es una variable global que esta en monty.h
+	 * el fopen es para abrir un archivo, la r es para que solo se
+	 * leer el archivo
+	 */
+	far.fd = fopen(argv, "r");
+
+	if (argc == 2)
+	{
+		while(getline(&far.line, &len, far.fd) != -1)
+		{
+			count++;
+			argu = strtok(global.line, " \n\t\r");
+			if (argu == NULL)
+			{
+				free(argu);
+				continue;
+			}
+			else if (*argu == "#")
+			{
+				continue;
+			}
+
+			final = the_opcode(&stack, argu);
+		}
+	}
+
+
+
 }
