@@ -37,10 +37,14 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-typedef stack_t dlistint_t
+typedef stack_t dlistint_t;
+size_t print_dlistint(const dlistint_t *h);
+void pall_handler(stack_t **stack, unsigned int line_number);
+void push_handler(stack_t **stack, unsigned int line_number);
+stack_t *n_node(int n);
 
 #define USAGE "USAGE: monty file\n" 
-#define FILE_ERROR "Error": Can't open file %s\n"
+#define FILE_ERROR "Error: Can't open file %s\n"
 #define UNKNOWN "L%u: unknown instruction %s\n"
 #define MALLOC_FAIL "Error: malloc failed\n"
 #define PUSH_FAIL "L%u: usage: push integer\n"
