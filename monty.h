@@ -77,25 +77,25 @@ typedef stack_t dlistint_t;
 /* main.c */
 void monty(args_t *args);
 
-/* get_func.c */
+/* opcode.c */
 void (*get_func(char **parsed))(stack_t **, unsigned int);
 void push_handler(stack_t **stack, unsigned int line_number);
 void pall_handler(stack_t **stack, unsigned int line_number);
 
-/* handler_funcs1.c */
+/* handler1.c */
 void pint_handler(stack_t **stack, unsigned int line_number);
 void pop_handler(stack_t **stack, unsigned int line_number);
 void swap_handler(stack_t **stack, unsigned int line_number);
 void add_handler(stack_t **stack, unsigned int line_number);
 void nop_handler(stack_t **stack, unsigned int line_number);
 
-/* handler_funcs2.c */
+/* handler2.c */
 void sub_handler(stack_t **stack, unsigned int line_number);
 void div_handler(stack_t **stack, unsigned int line_number);
 void mul_handler(stack_t **stack, unsigned int line_number);
 void mod_handler(stack_t **stack, unsigned int line_number);
 
-/* handler_funcs3.c */
+/* handler3.c */
 void rotl_handler(stack_t **stack, unsigned int line_number);
 void rotr_handler(stack_t **stack, unsigned int line_number);
 void stack_handler(stack_t **stack, unsigned int line_number);
@@ -113,7 +113,7 @@ void free_everything(char **args);
 /* free.c */
 void free_all(int all);
 
-#define USAGE "USAGE: monty file\n" 
+#define USAGE "USAGE: monty file\n"
 #define FILE_ERROR "Error: Can't open file %s\n"
 #define UNKNOWN "L%u: unknown instruction %s\n"
 #define MALLOC_FAIL "Error: malloc failed\n"
