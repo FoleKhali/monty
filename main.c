@@ -1,84 +1,74 @@
 #include "monty.h"
 #include "lists.h"
 
-/**
- * monty - interpreter
- * @args: args
- */
+data_t data = DATA_INIT;
 
+/**
+ * monty - helper function for main function
+ * @args: pointer to struct of arguments from main
+ *
+ * Description: opens and reads from the file
+ * containing the opcodes, and calls the function
+ * that will find the corresponding executing function
+ */
 void monty(args_t *args)
 {
 	size_t len = 0;
 	int get = 0;
+	void (*code_func)(stack_t **, unsigned int);
 
 	if (args->ac != 2)
 	{
-		write(STDERR_FILENO, USAGE, 5)
+		dprintf(STDERR_FILENO, USAGE);
 		exit(EXIT_FAILURE);
 	}
-
+	data.fptr = fopen(args->av, "r");
+	if (!data.fptr)
+	{
+		dprintf(STDERR_FILENO, FILE_ERROR, args->av);
+		exit(EXIT_FAILURE);
+	}
+	while (1)
+	{
+		args->line_number++;
+		get = getline(&(data.line), &len, data.fptr);
+		if (get < 0)
+			break;
+		data.words = strtow(data.line);
+		if (data.words[0] == NULL || data.words[0][0] == '#')
+		{
+			free_all(0);
+			continue;
+		}
+		code_func = get_func(data.words);
+		if (!code_func)
+		{
+			dprintf(STDERR_FILENO, UNKNOWN, args->line_number, data.words[0]);
+			free_all(1);
+			exit(EXIT_FAILURE);
+		}
+		code_func(&(data.stack), args->line_number);
+		free_all(0);
+	}
+	free_all(1);
 }
 
 /**
- * main - the main function
- * @argc: argc
- * @argv: argv
- * Return: EXIT_SUCCESS
+ * main - entry point for monty bytecode interpreter
+ * @argc: number of arguments
+ * @argv: array of arguments
+ *
+ * Return: EXIT_SUCCESS or EXIT_FAILURE
  */
-/**
 int main(int argc, char *argv[])
 {
-	args_ti = args;
+	args_t args;
 
-	args.av = argv[1]
+	args.av = argv[1];
 	args.ac = argc;
-	args.lin_number = 0;
-	monty(args);
+	args.line_number = 0;
+
+	monty(&args);
 
 	return (EXIT_SUCCESS);
-}
-*/
-/**
- * main - the main function
- * @argc: argc
- * @argv: argv
- * Return: EXIT_SUCCESS
- */
-int main(int argc, char *argv[])
-{
-	size_t len = 0;
-	int get = 0;
-	int count = 0;
-	char *argu = NULL;
-	int final = 0;
-	stack_t *stack = NULL;
-	/**
-	 * esta es una variable global que esta en monty.h
-	 * el fopen es para abrir un archivo, la r es para que solo se
-	 * leer el archivo
-	 */
-	far.fd = fopen(argv[1], "r");
-
-	if (argc == 2)
-	{
-		while(getline(&far.line, &len, far.fd) != -1)
-		{
-			count++;
-			argu = strtok(far.line, " \n\t\r");
-			if (argu == NULL)
-			{
-				free(argu);
-				continue;
-			}
-			else if (*argu == '#')
-			{
-				continue;
-			}
-
-			final = the_opcode(&stack, argu);
-		}
-	}
-
-
-
 }
