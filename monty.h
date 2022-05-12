@@ -1,10 +1,11 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <unistd.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -13,7 +14,7 @@
  * @next: points to the next element of the stack (or queue)
  *
  * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct stack_s
 {
@@ -28,13 +29,14 @@ typedef struct stack_s
  * @f: function to handle the opcode
  *
  * Description: opcode and its function
- * for stack, queues, LIFO, FIFO
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct instruction_s
 {
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
 /**
  * struct args_s - structure of arguments from main
  * @av: name of the file from the command line
@@ -46,7 +48,7 @@ typedef struct instruction_s
  */
 typedef struct args_s
 {
-char *av;
+	char *av;
 	int ac;
 	unsigned int line_number;
 } args_t;
