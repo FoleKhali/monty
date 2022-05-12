@@ -37,29 +37,82 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 /**
- * struct far_s - global variable
- * @fd: File descriptor
- * @line: for getline
+ * struct args_s - structure of arguments from main
+ * @av: name of the file from the command line
+ * @ac: number of arguments from main
+ * @line_number: number of the current line in the file
  *
- * Description: to have getline
+ * Description: arguments passed to main from the command line
+ * used in different functions, organized in a struct for clarity
  */
-typedef struct far_s
+typedef struct args_s
 {
-	FILE *fd;
+	char *av;
+	int ac;
+	unsigned int line_number;
+} args_t;
+
+/**
+ * struct data_s - extern data to access inside functions
+ * @line: line from the file
+ * @words: parsed line
+ * @stack: pointer to the stack
+ * @fptr: file pointer
+ * @qflag: flag for queue or stack
+ */
+typedef struct data_s
+{
 	char *line;
-} far_t;
-extern int result;
-extern far_t far;
-void the_opcode(stack_t **stack, char *argu);
+	char **words;
+	stack_t *stack;
+	FILE *fptr;
+	int qflag;
+} data_t;
+
+extern data_t data;
+
 typedef stack_t dlistint_t;
-size_t print_dlistint(const dlistint_t *h);
-void pall_handler(stack_t **stack, unsigned int line_number);
+
+#define DATA_INIT {NULL, NULL, NULL, NULL, 0}
+
+/* main.c */
+void monty(args_t *args);
+
+/* get_func.c */
+void (*get_func(char **parsed))(stack_t **, unsigned int);
 void push_handler(stack_t **stack, unsigned int line_number);
-void nop_handler(stack_t **stack, unsigned int line_number);
-void pop_handler(stack_t **stack, unsigned int line_number);
-void sub_handler(stack_t **stack, unsigned int line_number);
+void pall_handler(stack_t **stack, unsigned int line_number);
+
+/* handler_funcs1.c */
 void pint_handler(stack_t **stack, unsigned int line_number);
-stack_t *n_node(int n);
+void pop_handler(stack_t **stack, unsigned int line_number);
+void swap_handler(stack_t **stack, unsigned int line_number);
+void add_handler(stack_t **stack, unsigned int line_number);
+void nop_handler(stack_t **stack, unsigned int line_number);
+
+/* handler_funcs2.c */
+void sub_handler(stack_t **stack, unsigned int line_number);
+void div_handler(stack_t **stack, unsigned int line_number);
+void mul_handler(stack_t **stack, unsigned int line_number);
+void mod_handler(stack_t **stack, unsigned int line_number);
+
+/* handler_funcs3.c */
+void rotl_handler(stack_t **stack, unsigned int line_number);
+void rotr_handler(stack_t **stack, unsigned int line_number);
+void stack_handler(stack_t **stack, unsigned int line_number);
+void queue_handler(stack_t **stack, unsigned int line_number);
+
+/* char.c */
+void pchar_handler(stack_t **stack, unsigned int line_number);
+void pstr_handler(stack_t **stack, unsigned int line_number);
+
+/* strtow.c */
+int count_word(char *s);
+char **strtow(char *str);
+void free_everything(char **args);
+
+/* free.c */
+void free_all(int all);
 
 #define USAGE "USAGE: monty file\n" 
 #define FILE_ERROR "Error: Can't open file %s\n"
@@ -71,7 +124,11 @@ stack_t *n_node(int n);
 #define SWAP_FAIL "L%u: can't swap, stack too short\n"
 #define ADD_FAIL "L%u: can't add, stack too short\n"
 #define SUB_FAIL "L%u: can't sub, stack too short\n"
-
-
+#define DIV_FAIL "L%u: can't div, stack too short\n"
+#define DIV_ZERO "L%u: division by zero\n"
+#define MUL_FAIL "L%u: can't mul, stack too short\n"
+#define MOD_FAIL "L%u: can't mod, stack too short\n"
+#define PCHAR_FAIL "L%u: can't pchar, stack empty\n"
+#define PCHAR_RANGE "L%u: can't pchar, value out of range\n"
 
 #endif
