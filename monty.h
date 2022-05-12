@@ -17,11 +17,10 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
-
 
 /**
  * struct instruction_s - opcode and its function
@@ -33,8 +32,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 /**
  * struct args_s - structure of arguments from main
@@ -47,7 +46,7 @@ typedef struct instruction_s
  */
 typedef struct args_s
 {
-	char *av;
+char *av;
 	int ac;
 	unsigned int line_number;
 } args_t;
