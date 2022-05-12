@@ -1,4 +1,3 @@
-
 # Monty ByteCode Intepreter 🐊
 
 ![holberton image](https://ml.globenewswire.com/Resource/Download/d138c375-4652-4de1-9ca2-0079e2686576)
@@ -11,13 +10,17 @@ Monty 0.98 is a scripting language that is first compiled into Monty byte codes 
 | File      | Description                |
 | :-------- | :------------------------- |
 |  `main.c`           | It contains the entry point of the program, where the execution begins.|
-|  `lists.h`          | It is a header file that contains all the c libraries needed for the program, the description and prototypes of all the functions, structures, builtins, printing functions, and helpers. |
-|  `monty.h`           | It save the parts to be analyzed later.|
-|  `fun1.c`     | It tries to execute the string as a command. |
-|  `new_defuncions.c`  | It contains the code for the environment and exit function components that are included in the program. |
-|  `defuncion.c`       | It contains the code of the builtins included in the program. |
-|  `man_1_simple_shell`| It is the manual for using the shell. Contains a description, ways for invocation, and some examples of builtins and executables that can be used inside the command line interpreter. |
-|  `AUTHORS`           | It contains the authors of the project |
+|  `monty.h`          | It is the first header file that contains all the c libraries needed for the program, the description and prototypes of all the functions, structures, builtins, printing functions, and helpers. |
+|  `lists.h`           | It is the second header file, this contains others functions that are necessary for the proggram to work|
+|  `fun1.c`     | Functions that help the main functions. |
+|  `fun2.c`     | Functions that help the main functions. |
+|  `opcode.c`  | The match file and some functions. |
+|  `handler1.c`       | It contains some of the functions that we need to interpret monty. |
+|  `handler2.c`| It contains some of the functions that we need to interpret monty. |
+|  `handler3.c`           | It contains some of the functions that we need to interpret monty. |
+|  `char.c`     | Another main functions. |
+|  `free.c`     | A function to free something by choice. |
+|  `strtow.c`     | Functions that help the main functions. |
 
 ## Installation
 
