@@ -57,20 +57,20 @@ int main(int argc, char *argv[])
 	 * el fopen es para abrir un archivo, la r es para que solo se
 	 * leer el archivo
 	 */
-	far.fd = fopen(argv, "r");
+	far.fd = fopen(argv[1], "r");
 
 	if (argc == 2)
 	{
 		while(getline(&far.line, &len, far.fd) != -1)
 		{
 			count++;
-			argu = strtok(global.line, " \n\t\r");
+			argu = strtok(far.line, " \n\t\r");
 			if (argu == NULL)
 			{
 				free(argu);
 				continue;
 			}
-			else if (*argu == "#")
+			else if (*argu == '#')
 			{
 				continue;
 			}
